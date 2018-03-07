@@ -1,5 +1,5 @@
 # Bibleify Desktop
-Simple bible with dramatized audio built with [Electron](https://electronjs.org/), [React](https://reactjs.org/), & [Rematch](https://rematch.gitbooks.io/rematch/#getting-started)
+Simple bible app with dramatized audio built with [Electron](https://electronjs.org/), [React](https://reactjs.org/), & [Rematch](https://rematch.gitbooks.io/rematch/#getting-started)
 
 
 ## Prerequisites

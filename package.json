@@ -1,7 +1,7 @@
 {
   "name": "AlkitabDesktopApp",
   "version": "1.0.0",
-  "description": "Modern Bible Desktop App",
+  "description": "Simple Bible Desktop App with Dramatized Audio",
   "main": "main.js",
   "scripts": {
     "eslint": "eslint 'src/**/*.js'",
@@ -12,13 +12,9 @@
     "postpackage": "electron-packager ./ --out=./builds  --icon=./appicon.icns"
   },
   "repository": "https://github.com/ig-ealbert/json-editor-electron",
-  "keywords": [
-    "Electron",
-    "Bible",
-    "Desktop"
-  ],
+  "keywords": ["Electron", "Bible", "Desktop", "Audio", "Soundcloud"],
   "author": "sonnylazuardi",
-  "license": "CC0-1.0",
+  "license": "MIT",
   "dependencies": {
     "@rematch/core": "^0.4.1",
     "babel-core": "^6.26.0",
