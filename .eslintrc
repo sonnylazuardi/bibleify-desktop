@@ -1,0 +1,41 @@
+{
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "globals": {
+    "clearInterval": true,
+    "clearTimeout": true,
+    "console": false,
+    "fetch": true,
+    "navigator": false,
+    "setTimeout": true,
+    "setInterval": true,
+    "React$Component": false,
+    "React$Element": false,
+    "require": true,
+    "Promise": true,
+    "alert": true,
+    "document": true,
+    "prompt": true,
+  },
+  "rules": {
+    "comma-dangle": [1, {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "ignore",
+    }],
+    "curly": [1, "all"],
+    "indent": [1, 2],
+    "jsx-quotes": [1, "prefer-single"],
+    "max-len": [1, 120],
+    "no-console": 1,
+    "no-unused-vars": 1,
+    "quotes": [1, "single", { "avoidEscape": true }],
+    "semi": [1, "always"],
+    "react/prop-types": 0,
+  }
+}

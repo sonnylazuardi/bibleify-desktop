@@ -1,0 +1,59 @@
+{
+  "name": "AlkitabDesktopApp",
+  "version": "1.0.0",
+  "description": "Modern Bible Desktop App",
+  "main": "main.js",
+  "scripts": {
+    "eslint": "eslint 'src/**/*.js'",
+    "prod": "webpack --config webpack.build.config.js && electron --noDevServer .",
+    "dev": "webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
+    "build": "webpack --config webpack.build.config.js",
+    "package": "webpack --config webpack.build.config.js",
+    "postpackage": "electron-packager ./ --out=./builds  --icon=./appicon.icns"
+  },
+  "repository": "https://github.com/ig-ealbert/json-editor-electron",
+  "keywords": [
+    "Electron",
+    "Bible",
+    "Desktop"
+  ],
+  "author": "sonnylazuardi",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "@rematch/core": "^0.4.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-react": "^6.24.1",
+    "babili-webpack-plugin": "^0.1.2",
+    "bootstrap": "^4.0.0",
+    "clappr": "^0.2.86",
+    "css-loader": "^0.28.9",
+    "electron": "^1.7.8",
+    "electron-packager": "^11.0.1",
+    "electron-prompt": "^0.5.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.8",
+    "html-webpack-plugin": "^2.30.1",
+    "ionicons": "^3.0.0",
+    "jsoneditor": "^5.5.10",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "reactstrap": "^5.0.0-beta",
+    "realm": "2.2.10",
+    "style-loader": "^0.20.2",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "electron-rebuild": "^1.7.3",
+    "eslint": "^4.18.1",
+    "eslint-plugin-react": "^7.7.0",
+    "node-loader": "^0.6.0",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "webpack-node-externals": "^1.6.0"
+  }
+}
