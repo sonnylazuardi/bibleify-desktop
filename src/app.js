@@ -7,13 +7,14 @@ import Content from './components/content';
 import Player from './components/player';
 import Search from './components/search';
 
-class App extends PureComponent {
+@connect(state => ({ bible: state.bible }), dispatch => ({ dispatch }))
+export default class App extends PureComponent {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    this.props.fetchVerses(this.props.bible);
+    this.props.dispatch.bible.fetchVerses(this.props.bible);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -23,19 +24,22 @@ class App extends PureComponent {
       activeChapter != this.props.bible.activeChapter ||
       activeVersion != this.props.bible.activeVersion
     ) {
-      this.props.fetchVerses(nextProps.bible);
+      this.props.dispatch.bible.fetchVerses(nextProps.bible);
     }
   }
 
   render() {
+    const mergeStyle = Object.assign;
     return (
-      <div className='root-wrapper'>
-        <Sidebar />
-        <div className='content'>
-          <Toolbar />
-          <div style={{ flex: 1, display: 'flex' }}>
-            <Content />
-            <Search />
+      <div style={mergeStyle({}, styles.flex, styles.column, styles.fullHeight)} className='root-wrapper'>
+        <div style={mergeStyle({}, styles.flex, styles.row)}>
+          <Sidebar />
+          <div style={mergeStyle({}, styles.flex, styles.hidden)} className='content'>
+            <Toolbar />
+            <div style={mergeStyle({}, styles.flex)}>
+              <Content />
+              <Search />
+            </div>
           </div>
         </div>
         <Player />
@@ -44,11 +48,21 @@ class App extends PureComponent {
   }
 }
 
-export default connect(
-  state => ({
-    bible: state.bible,
-  }),
-  dispatch => ({
-    fetchVerses: dispatch.bible.fetchVerses,
-  })
-)(App);
+const styles = {
+  fullHeight: {
+    height: '100vh',
+  },
+  overHidden: {
+    overflow: 'hidden',
+  },
+  flex: {
+    flex: 1,
+    display: 'flex',
+  },
+  column: {
+    flexDirection: 'column',
+  },
+  row: {
+    flexDirection: 'row',
+  },
+};

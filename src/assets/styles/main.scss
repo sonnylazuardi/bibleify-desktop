@@ -136,14 +136,14 @@ h1 {
   .verse-container {
     flex: 1;
     padding: 0;
-    overflow: hidden;
-    height: calc(100vh - 54px);
+    // overflow: hidden;
+    // height: calc(100vh - 54px);
     background-color: white;
     position: relative;
 
     .verse-scroll {
-      overflow: auto;
-      height: calc(100vh - 54px);
+      // overflow: auto;
+      // height: calc(100vh - 54px);
     }
 
     .title {
@@ -226,13 +226,13 @@ h1 {
 }
 
 .player {
-  position: absolute;
+  // position: absolute;
   width: 100%;
   height: 90px;
-  bottom: 0;
-  left: 0;
+  // bottom: 0;
+  // left: 0;
   background: #282828;
-  z-index: 20;
+  // z-index: 20;
 }
 
 .search {
@@ -356,6 +356,70 @@ button:focus,
   i {
     margin-left: -4px;
   }
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  padding: 3px 0;
+  border-radius: 15px;
+
+  i {
+    font-size: 23px;
+    margin-top: -3px;
+    color: #aaa;
+  }
+}
+
+.btn-dark {
+  background: #2f2f2f;
+  border-color: #282828;
+}
+
+.btn-play {
+  width: 36px;
+  height: 36px;
+  padding: 5px 0;
+  border-radius: 18px;
+
+  i {
+    margin-left: -1px;
+    margin-top: -2px;
+  }
+}
+
+.ion-active {
+  color: white !important;
+  margin-left: -5px;
+}
+
+.ion-inactive {
+  color: #999 !important;
+  margin-left: -5px;
+}
+
+.ion-white {
+  font-size: 30px;
+  padding: 0;
+  margin-top: -12px;
+  color: #fff !important;
+  margin-right: 15px;
+}
+
+.btn-darker {
+  background: #282828;
+  border-color: #282828;
+  margin: 0 15px;
+
+  i {
+    margin-left: -3px;
+  }
+}
+
+.current-chapter {
+  color: white;
+  padding: 15px;
+  font-family: 'Lato-Black';
 }
 
 // Turn on custom scrollbar

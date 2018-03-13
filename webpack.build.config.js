@@ -29,6 +29,10 @@ module.exports = {
         include: defaultInclude,
       },
       {
+        test: /\.node$/,
+        use: [{ loader: 'node-loader' }],
+      },
+      {
         test: /\.scss$/,
         include: defaultInclude,
         use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'sass-loader' }],
@@ -54,7 +58,7 @@ module.exports = {
   target: 'electron-renderer',
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Localization Editor',
+      title: 'Bibleify',
     }),
     new ExtractTextPlugin('bundle.css'),
     new webpack.DefinePlugin({
