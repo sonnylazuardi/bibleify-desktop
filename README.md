@@ -23,6 +23,14 @@ Bibleify is made in Singapore with lots of ❤️​by Sonny Lazuardi​​ & th
 - Blazing fast search
 - High quality dramatized bible audio
 - Offline bible reading
+- Multiple languages & bible versions
+  - New King James Version (NKJV)
+  - King James Version (KJV)
+  - New International Version (NIV)
+  - English Standard Version (ESV)
+  - Terjemahan Baru (TB)
+  - Bahasa Jawa (JAWA)
+  - Bahasa Sunda (SUNDA)
 
 ## Roadmap
 
