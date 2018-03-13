@@ -1,4 +1,6 @@
-import * as Realm from 'realm';
+const Realm = require('../../lib/realm.node').Realm;
+require('../../lib/extensions')(Realm);
+
 import { remote } from 'electron';
 import PassageSchema from '../constants/PassageSchema';
 

@@ -1,8 +1,9 @@
 import Books from '../constants/Books';
 import Versions from '../constants/Versions';
-import * as Realm from 'realm';
 import { remote } from 'electron';
 import PassageSchema from '../constants/PassageSchema';
+const Realm = require('../../lib/realm.node').Realm;
+require('../../lib/extensions')(Realm);
 
 export const bible = {
   state: {
