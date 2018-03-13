@@ -1,4 +1,5 @@
 import * as Realm from 'realm';
+import { remote } from 'electron';
 import PassageSchema from '../constants/PassageSchema';
 
 export const search = {
@@ -26,7 +27,7 @@ export const search = {
         schema: [PassageSchema],
         readOnly: true,
         inMemory: false,
-        path: `${activeVersion.value}.realm`,
+        path: `${remote.app.getAppPath()}/${activeVersion.value}.realm`,
       }).then(realm => {
         let passages = realm.objects('Passage');
         let query = `content CONTAINS[c] "${text}" AND type != "t"`;

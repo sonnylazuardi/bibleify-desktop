@@ -1,6 +1,7 @@
 import Books from '../constants/Books';
 import Versions from '../constants/Versions';
 import * as Realm from 'realm';
+import { remote } from 'electron';
 import PassageSchema from '../constants/PassageSchema';
 
 export const bible = {
@@ -57,7 +58,7 @@ export const bible = {
         schema: [PassageSchema],
         readOnly: true,
         inMemory: false,
-        path: `${activeVersion.value}.realm`,
+        path: `${remote.app.getAppPath()}/${activeVersion.value}.realm`,
       }).then(realm => {
         let passages = realm.objects('Passage');
         let filteredPassages = passages

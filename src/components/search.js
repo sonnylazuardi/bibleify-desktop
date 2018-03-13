@@ -26,14 +26,14 @@ export default class Search extends PureComponent {
     }
 
     return (
-      <div className='search'>
+      <div className='search' style={{ display: 'flex', overflow: 'hidden', flexDirection: 'column' }}>
         <div className='search-header'>
           <div className='search-caption'>Search Results</div>
           <button className='btn btn-circle btn-outline-secondary' onClick={() => this.onCloseSearch()}>
             <i className='ion ion-ios-close' />
           </button>
         </div>
-        <div className='search-scroll'>
+        <div className='search-scroll' style={{ flex: 1, display: 'flex', overflow: 'auto', flexDirection: 'column' }}>
           {results.map((item, i) => {
             const currentBook = Books.find(book => {
               return book.value == item.book;
