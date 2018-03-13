@@ -1,7 +1,6 @@
 import Books from '../constants/Books';
 import Versions from '../constants/Versions';
-// import * as Realm from 'realm';
-const Realm = {};
+import * as Realm from 'realm';
 import PassageSchema from '../constants/PassageSchema';
 
 export const bible = {

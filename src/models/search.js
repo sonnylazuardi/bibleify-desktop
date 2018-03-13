@@ -1,5 +1,4 @@
-// import * as Realm from 'realm';
-const Realm = {};
+import * as Realm from 'realm';
 import PassageSchema from '../constants/PassageSchema';
 
 export const search = {
