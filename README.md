@@ -1,11 +1,11 @@
 # Bibleify Desktop
 Simple bible app with dramatized audio built with [Electron](https://electronjs.org/), [React](https://reactjs.org/), [Rematch](https://rematch.gitbooks.io/rematch/#getting-started), & [Clappr](https://github.com/clappr/clappr)
 
-![bibleifyscreen](/images/bibleifyscreen.png)
+![bibleifyscreen](/images/bibleifyscreen.jpg)
 
-## Installing
+## Downloads
 
-Download the latest version in [Release](/releases)
+[Click here](https://sonnylab.itch.io/bibleify) to download the latest version.
 
 ## Prerequisites
 
