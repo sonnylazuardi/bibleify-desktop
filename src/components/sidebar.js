@@ -1,11 +1,12 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import Books from '../constants/Books';
 import { connect } from 'react-redux';
 
-class Sidebar extends PureComponent {
+@connect(state => ({ bible: state.bible }), dispatch => ({ dispatch }))
+export default class Sidebar extends PureComponent {
   onChangeActiveBook(book) {
-    this.props.setActiveChapter(1);
-    this.props.setActiveBook(book);
+    this.props.dispatch.bible.setActiveChapter(1);
+    this.props.dispatch.bible.setActiveBook(book);
   }
   renderBook(book, i) {
     const { activeBook, activeVersion } = this.props.bible;
@@ -40,7 +41,7 @@ class Sidebar extends PureComponent {
       })[0];
       const currentChapter = parseInt(splitChapter[1]);
       if (activeBook) {
-        this.props.jumpToVerse({
+        this.props.dispatch.bible.jumpToVerse({
           activeBook,
           activeChapter: currentChapter,
           activeVerse: currentVerse,
@@ -48,10 +49,31 @@ class Sidebar extends PureComponent {
       }
     }
   }
-  render() {
+  filterBook(book, testament) {
     const { activeVersion, jumpText } = this.props.bible;
+    const currentBookName = activeVersion.lang == 'en' ? book.name.toLowerCase() : book.name_id.toLowerCase();
+    return book.type == testament && currentBookName.indexOf(jumpText.toLowerCase()) != -1;
+  }
+  renderBooks(testament) {
+    return Books.filter(book => this.filterBook(book, testament)).map(this.renderBook.bind(this));
+  }
+  renderTestament(testament) {
+    const { activeVersion } = this.props.bible;
+    if (testament == 'old') {
+      return activeVersion.lang == 'en' ? 'Old Testament' : 'Perjanjian Lama';
+    } else {
+      return activeVersion.lang == 'en' ? 'New Testament' : 'Perjanjian Baru';
+    }
+  }
+  render() {
+    const { jumpText } = this.props.bible;
+    const oldBooks = this.renderBooks('old');
+    const newBooks = this.renderBooks('new');
     return (
-      <div className='sidebar'>
+      <div
+        className='sidebar'
+        style={{ background: 'black', width: 165, paddingTop: 40, position: 'static', height: 'inherit' }}
+      >
         <div className='scroll'>
           <div className='sidebar-jump'>
             <input
@@ -60,30 +82,24 @@ class Sidebar extends PureComponent {
               placeholder='Jump'
               aria-describedby='basic-addon1'
               value={jumpText}
-              onChange={e => this.props.setJumpText(e.target.value)}
+              onChange={e => this.props.dispatch.bible.setJumpText(e.target.value)}
               onKeyPress={target => target.charCode == 13 && this.onJump()}
             />
           </div>
-          <div className='testament'>{activeVersion.lang == 'en' ? 'Old Testament' : 'Perjanjian Lama'}</div>
-          {Books.filter(book => book.type == 'old').map(this.renderBook.bind(this))}
-          <div className='testament testament-center'>
-            {activeVersion.lang == 'en' ? 'New Testament' : 'Perjanjian Baru'}
-          </div>
-          {Books.filter(book => book.type == 'new').map(this.renderBook.bind(this))}
+          {oldBooks.length ? (
+            <Fragment>
+              <div className='testament'>{this.renderTestament('old')}</div>
+              {oldBooks}
+            </Fragment>
+          ) : null}
+          {newBooks.length ? (
+            <Fragment>
+              <div className='testament testament-center'>{this.renderTestament('new')}</div>
+              {newBooks}
+            </Fragment>
+          ) : null}
         </div>
       </div>
     );
   }
 }
-
-export default connect(
-  state => ({
-    bible: state.bible,
-  }),
-  dispatch => ({
-    setActiveChapter: dispatch.bible.setActiveChapter,
-    setActiveBook: dispatch.bible.setActiveBook,
-    setJumpText: dispatch.bible.setJumpText,
-    jumpToVerse: dispatch.bible.jumpToVerse,
-  })
-)(Sidebar);

@@ -2,16 +2,17 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Books from '../constants/Books';
 
-class Search extends PureComponent {
+@connect(state => ({ bible: state.bible, search: state.search }), dispatch => ({ dispatch }))
+export default class Search extends PureComponent {
   onCloseSearch() {
-    this.props.setShow(false);
+    this.props.dispatch.search.setShow(false);
   }
   onJumpToVerse(e, item) {
     e.preventDefault();
     const currentBook = Books.find(book => {
       return book.value == item.book;
     });
-    this.props.jumpToVerse({
+    this.props.dispatch.bible.jumpToVerse({
       activeBook: currentBook,
       activeChapter: item.chapter,
       activeVerse: item.verse,
@@ -28,7 +29,7 @@ class Search extends PureComponent {
       <div className='search'>
         <div className='search-header'>
           <div className='search-caption'>Search Results</div>
-          <button className='btn btn-outline-secondary' onClick={() => this.onCloseSearch()}>
+          <button className='btn btn-circle btn-outline-secondary' onClick={() => this.onCloseSearch()}>
             <i className='ion ion-ios-close' />
           </button>
         </div>
@@ -53,14 +54,3 @@ class Search extends PureComponent {
     );
   }
 }
-
-export default connect(
-  state => ({
-    bible: state.bible,
-    search: state.search,
-  }),
-  dispatch => ({
-    jumpToVerse: dispatch.bible.jumpToVerse,
-    setShow: dispatch.search.setShow,
-  })
-)(Search);
